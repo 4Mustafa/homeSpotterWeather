@@ -43,33 +43,37 @@ class locationSearch extends Component {
 
  render() {
     if (this.state.hasSearched) {
-      console.log('reduxstateee is',this.props.reduxState.searchReducer.forecast.forecastday[0].day.maxtemp_f);
+      console.log('reduxstateee is',this.props.reduxState.searchReducer.location);
          var tomDate =  moment(this.props.reduxState.searchReducer.forecast.forecastday[0].date).format('dddd');
 var dayAfter =  moment(this.props.reduxState.searchReducer.forecast.forecastday[1].date).format('dddd');
 var twoDaysLater =   moment(this.props.reduxState.searchReducer.forecast.forecastday[2].date).format('dddd');
 
       return (
         <>
-        <div className="search">
-            <header><h2>Search for a City!</h2></header>
+           <div className="search">
+ <header><h4>Search for a city!</h4></header>
+ <br></br>
            <input variant="dark" value={this.state.search} onChange={this.handleChange} />
-              <Button  variant="dark" color="primary" onClick={this.handleSubmit}> Search</Button></div>
+    <Button  color="primary" onClick={this.handleSubmit}> Search</Button></div>
  <br></br>
  <br></br>
-<Table variant="dark">
-  <thead>
+       <h1 class="title"> {this.props.reduxState.searchReducer.location.name}</h1><h1 class="title"> {this.props.reduxState.searchReducer.location.region}</h1>
+       <br></br>
+
+<Table variant="dark" size="sm">
+  <tbody>
     <tr>
       <th>Today</th>
       <th>    <Card.Img  variant="dark" src={this.props.reduxState.searchReducer.current.condition.icon}/> </th>
       <th>    {this.props.reduxState.searchReducer.current.condition.text}</th>
       <th>  <span>Current temp</span> {this.props.reduxState.searchReducer.current.temp_f}<span>°</span></th>
+      <th>  <span>Feels Like</span> {this.props.reduxState.searchReducer.current.feelslike_f}<span>°</span></th>
+
     </tr>
-  </thead>
-  <tbody>
     <tr>
       <th> {tomDate}</th>
       <th><Card.Img  variant="dark" src={this.props.reduxState.searchReducer.forecast.forecastday[0].day.condition.icon}/> </th>
-      <td>{this.props.reduxState.searchReducer.forecast.forecastday[0].day.condition.text}</td>
+      <th>{this.props.reduxState.searchReducer.forecast.forecastday[0].day.condition.text}</th>
       <th><span>Max temp</span> {this.props.reduxState.searchReducer.forecast.forecastday[0].day.maxtemp_f}<span>°</span></th>
        <th><span>Min temp</span> {this.props.reduxState.searchReducer.forecast.forecastday[0].day.mintemp_f}<span>°</span></th>
 
@@ -77,7 +81,7 @@ var twoDaysLater =   moment(this.props.reduxState.searchReducer.forecast.forecas
     <tr>
       <th> {dayAfter}</th>
       <th><Card.Img  variant="dark" src={this.props.reduxState.searchReducer.forecast.forecastday[1].day.condition.icon}/> </th>
-      <td>{this.props.reduxState.searchReducer.forecast.forecastday[1].day.condition.text}</td>
+      <th>{this.props.reduxState.searchReducer.forecast.forecastday[1].day.condition.text}</th>
       <th><span>Max temp</span> {this.props.reduxState.searchReducer.forecast.forecastday[1].day.maxtemp_f}<span>°</span></th>
       <th><span>Min temp</span>  {this.props.reduxState.searchReducer.forecast.forecastday[1].day.mintemp_f}<span>°</span></th>
 
@@ -85,7 +89,7 @@ var twoDaysLater =   moment(this.props.reduxState.searchReducer.forecast.forecas
     <tr>
       <th> {twoDaysLater}</th>
       <th><Card.Img  variant="dark" src={this.props.reduxState.searchReducer.forecast.forecastday[2].day.condition.icon}/> </th>
-      <td>{this.props.reduxState.searchReducer.forecast.forecastday[2].day.condition.text}</td>
+      <th>{this.props.reduxState.searchReducer.forecast.forecastday[2].day.condition.text}</th>
       <th><span>Max temp</span> {this.props.reduxState.searchReducer.forecast.forecastday[2].day.maxtemp_f}<span>°</span></th>
       <th><span>Min temp</span>  {this.props.reduxState.searchReducer.forecast.forecastday[2].day.mintemp_f}<span>°</span></th>
 
@@ -99,10 +103,13 @@ var twoDaysLater =   moment(this.props.reduxState.searchReducer.forecast.forecas
     } else {
       return (
         <>
+          <h1 class="title">HomeSpotter Weather </h1>
+
         <div className="search">
- <header><h2>Search for a city!!!!</h2></header>
+ <header><h4>Search for a city!</h4></header>
+ <br></br>
            <input variant="dark" value={this.state.search} onChange={this.handleChange} />
-    <Button variant="dark" color="primary" onClick={this.handleSubmit}> Search</Button></div>
+    <Button  color="primary" onClick={this.handleSubmit}> Search</Button></div>
         </>
       );
     }
