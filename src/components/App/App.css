@@ -19,11 +19,15 @@
 }
 
 * {
-  background-color: #343a3f;
-  color: aliceblue;
+  background-color: #ffffff;
+  font-size: large;
+    color: #e16853;
 }
 
 .title {
   text-align: center;
-  color: #027bff;
+  color: #e16853;
+}
+button{
+  color: #e16853;
 }
