@@ -11,6 +11,7 @@ import { HashRouter as Router } from 'react-router-dom';
 import App from './components/App/App';
 
 const searchReducer = (state = [], action) => {
+    // holds the request response in a an array
     console.log('in searchReducer');
     switch (action.type){
         case 'SEARCH_RESULTS':
@@ -27,6 +28,7 @@ function* rootSaga(){
 
 
 function* getLocoSaga(action){
+    // sends a request to the server with the users city input
     console.log('in getLocoSaga', action.payload);
     try{
         const response = yield axios.get(`/api/search/${action.payload}`);

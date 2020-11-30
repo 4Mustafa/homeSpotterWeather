@@ -1,10 +1,9 @@
 const express = require('express');
-const pool = require('../modules/pool');
 const axios = require('axios');
 require('dotenv').config();
 const router = express.Router();
 
-// search and returns searched images
+// router to ger the requested data using user city input
 router.get('/:id', (req, res) => {
         axios.get(`http://api.weatherapi.com/v1/forecast.json?key=6ea0943cfa91489588303237202511&q=${req.params.id}&days=3`)
 
@@ -16,4 +15,3 @@ router.get('/:id', (req, res) => {
   })
   
 module.exports = router;
-  
